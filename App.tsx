@@ -1,4 +1,4 @@
-import {Image} from 'react-native';
+import {Image, Platform} from 'react-native';
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import Home from './src/screens/Home/Home';
@@ -45,15 +45,22 @@ const App = () => {
             tabBarActiveTintColor: '#fff',
             tabBarInactiveTintColor: '#6D6D6D',
             tabBarLabelStyle: {
-              marginTop: 9,
+              // marginTop: 9,
             },
             tabBarStyle: {
-              backgroundColor: '#000',
-              position: 'absolute',
-              height: 95,
-              paddingVertical: 20,
-              bottom: 0,
-              borderRadius: 30,
+              ...Platform.select({
+                ios: {
+                  backgroundColor: '#000',
+                  height: 95,
+                },
+                android: {
+                  backgroundColor: '#000',
+                  paddingVertical: 10,
+                  height: 70,
+                },
+              }),
+              borderTopRightRadius: 30,
+              borderTopLeftRadius: 30,
             },
 
             tabBarIcon: ({focused}) => renderTabBarIcon(focused, route.name),

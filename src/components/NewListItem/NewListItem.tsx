@@ -94,6 +94,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginBottom: 8,
     flex: 2,
+    color: '#000',
     alignItems: 'flex-start',
   },
   bottomContainer: {
@@ -121,18 +122,17 @@ const styles = StyleSheet.create({
   },
   byline: {
     fontSize: 13,
-
+    color: '#000',
     fontWeight: '400',
   },
   data: {
     fontSize: 13,
-
     fontWeight: '400',
     color: '#6D6D6D',
   },
   source: {
     fontSize: 13,
-
+    color: '#000',
     fontWeight: '400',
   },
 });

@@ -78,7 +78,7 @@ export default Home;
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    // padding: 20,
     backgroundColor: '#fff',
   },
   flatContainer: {
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
   },
   byline: {
     fontSize: 13,
-
+    color: '#000',
     fontWeight: '400',
   },
   data: {

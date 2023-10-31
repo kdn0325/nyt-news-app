@@ -289,6 +289,7 @@ const styles = StyleSheet.create({
   },
   pickTitle: {
     fontSize: 16,
+    color: '#000',
     fontWeight: '600',
     marginBottom: 8,
   },
