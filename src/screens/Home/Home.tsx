@@ -78,7 +78,6 @@ export default Home;
 
 const styles = StyleSheet.create({
   container: {
-    // padding: 20,
     backgroundColor: '#fff',
   },
   flatContainer: {
