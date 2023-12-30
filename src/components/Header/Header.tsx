@@ -19,7 +19,7 @@ import {
 import {useAppDispatch} from '../../redux/store';
 import Modal from 'react-native-modal';
 import {RootState} from '../../redux/store/reducer';
-import TitleButton from '../Button/Button';
+import Button from '../Button/Button';
 import DatePicker from 'react-native-date-picker';
 import useDateFormatter from '../../hook/useDateFormat';
 import {CountryOptionList} from '../../data';
@@ -198,7 +198,7 @@ const Header = () => {
               <CountryOption handleCountrySelection={handleCountrySelection} />
             </View>
             <Pressable style={styles.pressButton} onPress={() => applyFilter()}>
-              <TitleButton title={'필터 적용하기'} />
+              <Button title={'필터 적용하기'} />
             </Pressable>
           </View>
         </Modal>

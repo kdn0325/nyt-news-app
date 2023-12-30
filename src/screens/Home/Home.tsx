@@ -1,7 +1,7 @@
 import {FlatList, StyleSheet, SafeAreaView} from 'react-native';
 import React, {useCallback, useEffect} from 'react';
 
-import Header from '../../components/Header/Header';
+
 import {useSelector} from 'react-redux';
 import {useAppDispatch} from '../../redux/store';
 import {RootState} from '../../redux/store/reducer';
@@ -11,6 +11,7 @@ import {IArticle} from '../../types';
 
 import {ThunkDispatch} from 'redux-thunk';
 import {AnyAction} from '@reduxjs/toolkit';
+import Header from '../../components/Header/Header';
 
 const Home = () => {
   const dispatch: ThunkDispatch<RootState, undefined, AnyAction> =
