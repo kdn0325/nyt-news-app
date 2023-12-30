@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 
-const TitleButton = ({title}: {title: string}) => {
+const Button = ({title}: {title: string}) => {
   return (
     <View style={styles.buttonContainer}>
       <Text style={styles.buttonText}>{title}</Text>
@@ -9,7 +9,7 @@ const TitleButton = ({title}: {title: string}) => {
   );
 };
 
-export default TitleButton;
+export default Button;
 
 const styles = StyleSheet.create({
   buttonContainer: {
