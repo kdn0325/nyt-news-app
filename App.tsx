@@ -6,6 +6,7 @@ import Bookmark from './src/screens/Bookmark/Bookmark';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Provider} from 'react-redux';
 import store from './src/redux/store/index';
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 
 const Tab = createBottomTabNavigator();
 
@@ -34,46 +35,48 @@ const renderTabBarIcon = (focused: boolean, routeName: string) => {
 
   return <Image source={iconName} />;
 };
+const queryClient = new QueryClient({
+  defaultOptions: {queries: {retry: 5, retryDelay: 1000}},
+});
 
 const App = () => {
   return (
     <Provider store={store}>
-      <NavigationContainer>
-        <Tab.Navigator
-          screenOptions={({route}) => ({
-            headerShown: false,
-            tabBarActiveTintColor: '#fff',
-            tabBarInactiveTintColor: '#6D6D6D',
-            tabBarLabelStyle: {
-              // marginTop: 9,
-            },
-            tabBarStyle: {
-              ...Platform.select({
-                ios: {
-                  backgroundColor: '#000',
-                  height: 95,
-                },
-                android: {
-                  backgroundColor: '#000',
-                  paddingVertical: 10,
-                  height: 70,
-                },
-              }),
-              borderTopRightRadius: 30,
-              borderTopLeftRadius: 30,
-            },
+      <QueryClientProvider client={queryClient}>
+        <NavigationContainer>
+          <Tab.Navigator
+            screenOptions={({route}) => ({
+              headerShown: false,
+              tabBarActiveTintColor: '#fff',
+              tabBarInactiveTintColor: '#6D6D6D',
+              tabBarStyle: {
+                ...Platform.select({
+                  ios: {
+                    backgroundColor: '#000',
+                    height: 95,
+                  },
+                  android: {
+                    backgroundColor: '#000',
+                    paddingVertical: 10,
+                    height: 70,
+                  },
+                }),
+                borderTopRightRadius: 30,
+                borderTopLeftRadius: 30,
+              },
 
-            tabBarIcon: ({focused}) => renderTabBarIcon(focused, route.name),
-          })}>
-          {/* 앱 시작시 처음 화면 */}
-          <Tab.Screen name="Home" component={Home} options={{title: '홈'}} />
-          <Tab.Screen
-            name="Bookmark"
-            component={Bookmark}
-            options={{title: '스크랩'}}
-          />
-        </Tab.Navigator>
-      </NavigationContainer>
+              tabBarIcon: ({focused}) => renderTabBarIcon(focused, route.name),
+            })}>
+            {/* 앱 시작시 처음 화면 */}
+            <Tab.Screen name="Home" component={Home} options={{title: '홈'}} />
+            <Tab.Screen
+              name="Bookmark"
+              component={Bookmark}
+              options={{title: '스크랩'}}
+            />
+          </Tab.Navigator>
+        </NavigationContainer>
+      </QueryClientProvider>
     </Provider>
   );
 };
